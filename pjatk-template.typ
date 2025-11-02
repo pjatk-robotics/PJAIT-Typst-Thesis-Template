@@ -10,6 +10,8 @@
     auxiliary-supervisor: "Auxiliary Supervisor's Name",
     language: "en"
 ) = {
+    set document(title: title)
+
     set page(
         paper: "a4",
         margin: (top: 1in, bottom: 1.25in, left: 1.5in, right: 1.5in),
@@ -48,14 +50,13 @@
         it
     }
 
-    show raw: it => [
-        #v(1pt)
-        #box(
+    show raw: it => {
+        box(
             radius: 4pt,
             fill: rgb(210, 235, 235, 80),
             outset: 2pt
         )[#it]
-    ]
+    }
 
     set enum(indent: 2em)
     set list(indent: 2em, marker: ([•], [◦]))
@@ -90,7 +91,8 @@
 
             #v(1cm)
 
-            #strong(text(size: 2em, title))
+            #show title: it => strong(text(size: 2em, it))
+            #title
 
             #v(1fr)
 

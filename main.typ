@@ -32,7 +32,7 @@ Briefly introduce the results of your work.
 
 Explain how is your document structured by briefly summarizing all the chapters. This sections is usually filled in last.
 
-== Example: Chapters, sections, subsections, and subsubsections <chapters>
+== Example: Chapters, sections, and subsections <chapters>
 
 Use appropriate commands to introduce chapters. Use enumerations or itemizations when it makes sense---it elevates the readability of your work. For example, here is how we introduce specific types of sections:
 + Top-level --- _chapters_. Use `= Chapter Name` to introduce them.

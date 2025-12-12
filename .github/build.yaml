@@ -1,0 +1,21 @@
+name: Build reports PDF documents
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      - name: Install Typst
+        uses: typst-community/setup-typst@v4
+      - name: Build PDF
+        run: typst compile main.typ main.pdf
+      - name: Commit and push PDF
+        uses: flex-development/gh-commit@1.0.0
+        with:
+          message: "[build]: Compile PDF"
+          ref: main

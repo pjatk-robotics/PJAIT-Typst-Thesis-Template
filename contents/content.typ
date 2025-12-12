@@ -1,4 +1,4 @@
-= Content
+= Content #sym.dagger
 
 Be direct.
 The thesis should be _as short as possible,
@@ -14,7 +14,7 @@ what is different about your approach, etc.
 If it gets lengthy,
 you can divide it into multiple chapters.
 
-== How much to cite?
+== How much to cite? #sym.dagger
 
 It is impossible to answer this question precisely.
 A rule of thumb presents itself as follows:
@@ -39,7 +39,7 @@ Theses that were prepared and submitted
 without the supervisor's active overseeing of the process of creating them
 will be rejected.
 
-== How to structure my work?
+== How to structure my work? #sym.dagger
 
 It is best to split your chapters
 #footnote[Chapters. Not sections, not subsections. Entire chapters.]
@@ -50,7 +50,7 @@ This makes it very easy to change the ordering,
 separate different topics,
 and collaborate.
 
-=== Manual numbering (of pretty much anything)
+=== Manual numbering (of pretty much anything) #sym.dagger
 
 Do *not* include any numbering in the names of the files.
 E.g., notice that the files are named `introduction.typ` and `content.typ`,
@@ -131,7 +131,7 @@ Rendered:
 - second item
 - third item
 
-== How to introduce other media content?
+== How to introduce other media content? #sym.dagger
 
 Typst provides a wide array of options
 to deal with inputting things like:
@@ -143,7 +143,7 @@ to deal with inputting things like:
 
 Let us inspect couple of examples.
 
-=== Code listings
+=== Code listings #sym.dagger
 
 For inline code use ``` `backticks` ``` (the character above your Tab key),
 and to introduce code listings use #raw("```triple backtics```") (preferably with specified language).
@@ -191,7 +191,7 @@ Currently, this template uses the Codly package @CodlyPackage @CodlyDocumentatio
 but it is acceptable to present and suggest alternatives
 (or at least help out with nicer rendering...).
 
-=== Tables
+=== Tables #sym.dagger
 
 Tables are very easy to make.
 To make a table
@@ -271,7 +271,7 @@ uses slightly different style.
     )
 ]<tab-Final-grade-clamp>
 
-=== Images (figures)
+=== Images (figures) #sym.dagger
 
 Including images is very easy.
 @img-raw-Typst-logo is included as-is,
@@ -285,7 +285,7 @@ was set to 50% (height was scaled automatically).
 ] <img-raw-Typst-logo>
 
 #figure(
-    caption: [Smaller Typst's logo.]
+    caption: [Typst's logo, but smaller.]
 )[
     #image("assets/Typst.png", width: 50%)
 ] <img-smaller-Typst-logo>
@@ -305,7 +305,7 @@ placed below them.
 ] <img-raw-Typst-logo>
 
 #figure(
-    caption: "Smaller Typst's logo."
+    caption: [Typst's logo, but smaller.]
 )[
     #image("assets/Typst.png", width: 80%)
 ] <img-smaller-Typst-logo>
@@ -316,7 +316,7 @@ Always try to include images
 that are in vector format---rather than raster---so that automatic scaling
 is better applied.
 
-=== Equations
+=== Equations #sym.dagger
 
 Use LaTeX-like syntax.
 For inline equations,
@@ -344,7 +344,7 @@ $ a x^2+b x+c=0 $ <eq-Quadratic-example>
 
 and referenced like this: @eq-Quadratic-example.
 
-=== Figure functions
+=== Figure functions #sym.dagger
 
 Notice that in case of
 listings, tables, and images,

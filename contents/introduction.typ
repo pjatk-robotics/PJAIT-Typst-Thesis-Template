@@ -29,6 +29,10 @@ Introduce the goals of the work.
 What kind of research and/or tool
 this work is supposed to produce.
 
+What business or academic value
+has or will your work
+produce?
+
 == Conventions
 
 Explain the conventions used
@@ -42,10 +46,42 @@ which are too long to be rendered
 as a single one
 in this document.
 
+Another example would be
+a description of
+your very own notation
+you developed
+in your pioneering work.
+
+An example of a convention
+would be
+that in this document,
+chapters that contain
+the #sym.dagger symbol
+are "this-document-specific",
+and should _not_ appear
+in your thesis.
+The rest of them
+(that _do_ contain #sym.dagger)
+should be included
+in your document.
+
+=== Glossary of terms
+
+If you are using
+niche terms
+(or ones that you either invented
+or adapted in a non-standard way),
+this is the place
+to explain their meaning.
+In other words,
+here you provide definitions.
+
 == Results
 
 Briefly introduce
 the results of your work.
+What was accomplished
+and what was not.
 
 == Document structure
 
@@ -54,7 +90,7 @@ by briefly summarizing
 all the chapters.
 This section is usually filled in last.
 
-== Example: Chapters, sections, and subsections <chapters>
+== Example: Chapters, sections, and subsections #sym.dagger <chapters>
 
 Together, they are called _headings_.
 Use appropriate commands to introduce them.
@@ -73,7 +109,7 @@ For example, here is how we introduce specific types of sections:
 Headings are not titles,
 so Do Not Use Title Case.
 
-== Styling
+== Styling #sym.dagger
 
 Here,
 we will briefly explain
@@ -82,7 +118,7 @@ For starters,
 let us explain the difference between
 different dashes.
 
-=== Dashes
+=== Dashes #sym.dagger
 
 - Hyphens (-) are inputted
   by using a single `-` character.
@@ -104,7 +140,7 @@ different dashes.
     - This is very difficult---we are going to need to step down.
     - My good friend---John Doe---turned out very successful.
 
-=== Form and style <Form>
+=== Form and style #sym.dagger <Form>
 
 It is preferable
 to use infinitives
@@ -149,8 +185,13 @@ Contractions
 (_aren't_, _can't_, _wouldn't_)
 should be avoided.
 They are considered informal.
+If you cannot force yourself
+to not use them,
+use a `'[^ s]` regex
+to locate them in your project
+and replace them one-by-one.
 
-=== Quoting
+=== Quoting #sym.dagger
 
 In @Form,
 the colored sections were _quoted_.
@@ -159,7 +200,7 @@ are automatically handled
 by using
 the appropriate `#quote` function.
 
-=== Colors
+=== Colors #sym.dagger
 
 The usage of colored text
 should usually be avoided
@@ -176,7 +217,7 @@ you should not be using colors
 like they were used
 in @Form.
 
-=== Emphasis
+=== Emphasis #sym.dagger
 
 Since this document uses
 (and thus so should your thesis)
@@ -205,7 +246,7 @@ Or this one?
 
 #v(0.5in)
 
-=== Blocks of text
+=== Blocks of text #sym.dagger
 
 Do not introduce overly lengthy paragraphs.
 If it exceeds a third of a page,
@@ -227,13 +268,13 @@ This does not concern lower-level sections.
 An exception can be made
 if a significant number of figures, listings, etc. are present.
 
-=== Typos
+=== Typos #sym.dagger
 
 Pay attention to the quality of your text---both in terms of substantive value
 and form of the text.
 Use correct punctuation and a spell checker to detect typos.
 
-=== Customizing the style
+=== Customizing the style #sym.dagger
 
 Want to change the font?
 Maybe the font size?
@@ -249,7 +290,7 @@ of things that _may appear "cool"_,
 but could possibly be detrimental
 to good typography.
 
-=== Bibliography details
+=== Bibliography details #sym.dagger
 
 Bibliography items must be correctly referenced.
 Use the appropriate template and a `.bib` file.

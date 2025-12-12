@@ -8,7 +8,7 @@
     "keywords": ("pl": "Słowa kluczowe", "en": "Keywords"),
     "toc-title": ("pl": "Spis Treści", "en": "Table of Contents"),
     "list-of-listings": ("pl": "Spis Listingów", "en": "List of Listings"),
-    "list-of-images": ("pl": "Spis Rysunków", "en": "List of Images"),
+    "list-of-figures": ("pl": "Spis Rysunków", "en": "List of Figures"),
     "list-of-tables": ("pl": "Spis Tabel", "en": "List of Tables"),
 )
 
@@ -90,6 +90,7 @@
 
     abstract
 
+    v(1em)
     align(center, strong(text(size: 1.5em, [#commonPhrases.at("keywords").at(language)])))
 
     keywords
@@ -112,8 +113,8 @@
     department-pl: "Nazwa katedry",
     specialization-pl: "Nazwa specjalizacji",
     title-pl: "Twój strannie dobrawy i ekspresywny tytuł pracy dyplomowej",
-    abstract-pl: "tłumaczenie streszczenia",
-    keywords-pl: "tłumaczenie słów kluczowych",
+    abstract-pl: "Tłumaczenie streszczenia.",
+    keywords-pl: "Tłumaczenie słów kluczowych.",
 ) = {
     set document(title: title)
 
@@ -135,7 +136,7 @@
         lang: language
     )
 
-    set par(leading: 0.55em, justify: true, spacing: 0.55em)
+    set par(justify: true)
 
     set heading(numbering: "1.1")
 
@@ -159,7 +160,7 @@
 
     show raw.where(block: false): it => {
         highlight(
-            radius: 4pt,
+            radius: 2pt,
             fill: rgb(210, 235, 235, 80),
             extent: 0.5pt,
             top-edge: 1em,
@@ -254,8 +255,9 @@
     )
 
     context {
+        show outline: set heading(outlined: true)
         outline(title: commonPhrases.at("list-of-listings").at(text.lang), target: figure.where(kind: raw))
-        outline(title: commonPhrases.at("list-of-images").at(text.lang), target: figure.where(kind: image))
+        outline(title: commonPhrases.at("list-of-figures").at(text.lang), target: figure.where(kind: image))
         outline(title: commonPhrases.at("list-of-tables").at(text.lang), target: figure.where(kind: table))
     }
 }

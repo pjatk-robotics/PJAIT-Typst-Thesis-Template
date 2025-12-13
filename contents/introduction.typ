@@ -189,7 +189,7 @@ If you cannot force yourself
 to not use them,
 use a `'[^ s]` regex
 to locate them in your project
-and replace them one-by-one.
+and replace them one by one.
 
 === Quoting #sym.dagger
 

@@ -112,7 +112,7 @@
     faculty-pl: "Wydział Informatyki",
     department-pl: "Nazwa katedry",
     specialization-pl: "Nazwa specjalizacji",
-    title-pl: "Twój strannie dobrawy i ekspresywny tytuł pracy dyplomowej",
+    title-pl: "Twój starannie dobrany i ekspresywny tytuł pracy dyplomowej",
     abstract-pl: "Tłumaczenie streszczenia.",
     keywords-pl: "Tłumaczenie słów kluczowych.",
 ) = {

@@ -38,7 +38,7 @@
     authors,
     title,
     supervisor,
-    auxiliary-supervisor,
+    reviewer,
 ) = {
        set page(margin: margin)
        image(commonPhrases.at("logo").at(language))
@@ -73,7 +73,7 @@
                        #commonPhrases.at("supervision-text").at(language)
                        #v(1em)
                        #strong(supervisor)\
-                       #auxiliary-supervisor
+                       #reviewer
                    ]
                ]
            ]
@@ -105,7 +105,7 @@
     authors: ("Your Name --- s#####",),
     title: "Your Carefully Selected and Expressive Thesis Title",
     supervisor: "Supervisor's Name",
-    auxiliary-supervisor: "Auxiliary Supervisor's Name",
+    reviewer: "Reviewer's Name",
     abstract: placeholder-abstract,
     keywords: placeholder-keywords,
     for-printing: false,
@@ -195,7 +195,7 @@
             authors,
             title,
             supervisor,
-            auxiliary-supervisor,
+            reviewer,
         )
 
         if text.lang == "en" {
@@ -209,7 +209,7 @@
                 authors,
                 title-pl,
                 supervisor,
-                auxiliary-supervisor,
+                reviewer,
             )
             set text(lang: "en")
         } else {

@@ -67,7 +67,8 @@
            #v(1fr)
 
            #align(right)[
-               #set par(leading: 0.5em)
+               #set par(leading: 0.5em, justify: false)
+               #set text(hyphenate: false)
                #block(width: 5cm)[
                    #align(left)[
                        #commonPhrases.at("supervision-text").at(language)

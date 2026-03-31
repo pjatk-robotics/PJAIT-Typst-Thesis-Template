@@ -184,6 +184,7 @@
     show figure.where(kind: raw): set block(breakable: true)
     show figure.where(kind: table): set figure.caption(position: top)
     show figure.where(kind: table): set block(breakable: true)
+    show figure.where(kind: table): set par(justify: false)
     show figure.caption: set block(sticky: true)
 
     set math.equation(numbering: "(1)")

@@ -41,6 +41,12 @@ It's even easier if you:
 
 Thus, the shortest form becomes: `typst c main.typ`.
 
+> [!TIP]
+> Read the rendered document (`main.pdf`).
+> It showcases more examples of what you can do with Typst.
+> It also covers basic information
+> regarding how to structure your thesis.
+
 ## Why would I use Typst instead of MS Word, Google Docs, or LaTeX?
 
 Short answer(s):

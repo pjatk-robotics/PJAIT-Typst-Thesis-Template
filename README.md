@@ -103,6 +103,18 @@ There's an argument for that too
 The documentation for all arguments
 can be found [at the end of this document](#documentation-for-apply-pjatk-template-function-arguments).
 
+## I am writing a Master's thesis, not an Engineering one
+
+Call `apply-pjatk-template()` function
+`with` the following argument: `thesis-type: "master"`.
+
+The supervision text on the title page(s)
+will adjust automatically
+— e.g., for theses written in Polish,
+"Praca magisterska napisana pod kierunkiem:"
+will be typeset
+instead of "Praca inżynierska napisana pod kierunkiem:".
+
 ## I don't like that inline code has a blue background
 
 Call `apply-pjatk-template()` function
@@ -151,6 +163,15 @@ for Enlgish theses.
   for hyphenation, quotes, and some other things
   that Typst correctly handles,
   assuming that you have set the correct language.
+- `thesis-type: "engineering"` (🇬🇧+🇵🇱)
+
+  The type of your thesis
+  — either `"engineering"` or `"master"`.
+  It determines the supervision text
+  typeset on the title page(s)
+  above your supervisor's name,
+  e.g., "Praca inżynierska napisana pod kierunkiem:"
+  for engineering theses written in Polish.
 - `faculty: "Faculty of Computer Science"` (🇬🇧+🇵🇱)
   
   Name of the faculty.

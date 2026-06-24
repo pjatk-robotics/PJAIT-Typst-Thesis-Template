@@ -28,7 +28,7 @@
 #let placeholder-keywords = [
     Keywords #sym.dot.op can #sym.dot.op be #sym.dot.op both #sym.dot.op single- or multiple-word phrases
     #sym.dot.op At #sym.dot.op least #sym.dot.op 3 #sym.dot.op keywords #sym.dot.op are #sym.dot.op necessary
-    #sym.dot.op Threat #sym.dot.op them #sym.dot.op as #sym.dot.op tags #sym.dot.op Your #sym.dot.op thesis
+    #sym.dot.op Treat #sym.dot.op them #sym.dot.op as #sym.dot.op tags #sym.dot.op Your #sym.dot.op thesis
     #sym.dot.op must #sym.dot.op be #sym.dot.op searchable #sym.dot.op using #sym.dot.op them #sym.dot.op
     Separate them by using the `#sym.dot.op` syntax.]
 
@@ -132,10 +132,13 @@
 
     set document(title: title)
 
+    let normalMargins = (top: 1in, bottom: 1.25in, left: 1.75in, right: 1.75in);
+    let printingMargins = (top: 1in, bottom: 1.25in, inside: 2.25in, outside: 1.25in);
+
     let chosenMargins = if for-printing {
-        (top: 1in, bottom: 1.25in, inside: 2.25in, outside: 1.25in)
+        printingMargins
     } else {
-        (top: 1in, bottom: 1.25in, left: 1.75in, right: 1.75in)
+        normalMargins
     }
 
     set page(
@@ -205,33 +208,37 @@
     set math.equation(numbering: "(1)")
 
     context {
-        titlepage(
-            language,
-            thesis-type,
-            chosenMargins,
-            faculty,
-            department,
-            specialization,
-            authors,
-            title,
-            if text.lang == "pl" { supervisor-pl } else { supervisor },
-            if text.lang == "pl" { reviewer-pl } else { reviewer },
-        )
+        [
+            titlepage(
+                language,
+                thesis-type,
+                chosenMargins,
+                faculty,
+                department,
+                specialization,
+                authors,
+                title,
+                if text.lang == "pl" { supervisor-pl } else { supervisor },
+                if text.lang == "pl" { reviewer-pl } else { reviewer },
+            )
+        }
 
         if text.lang == "en" {
             set text(lang: "pl")
-            titlepage(
-                "pl",
-                thesis-type,
-                chosenMargins,
-                faculty-pl,
-                department-pl,
-                specialization-pl,
-                authors,
-                title-pl,
-                supervisor-pl,
-                reviewer-pl,
-            )
+            [
+                titlepage(
+                    "pl",
+                    thesis-type,
+                    chosenMargins,
+                    faculty-pl,
+                    department-pl,
+                    specialization-pl,
+                    authors,
+                    title-pl,
+                    supervisor-pl,
+                    reviewer-pl,
+                )
+            ]
             set text(lang: "en")
         } else {
             [~]
@@ -240,15 +247,15 @@
     }
 
     set page(numbering: "1")
-    
+
     import "@preview/codly:1.3.0": *
     import "@preview/codly-languages:0.1.1": *
     show: codly-init.with()
-    
+
     codly(
         zebra-fill: none,
         breakable: true,
-        number-align: right, 
+        number-align: right,
         number-placement: "outside",
         number-format: (n) => text(luma(180))[#str(n)],
         stroke: none,

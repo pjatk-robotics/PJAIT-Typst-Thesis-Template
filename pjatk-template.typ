@@ -161,7 +161,7 @@
     v(1em)
 
     for p in s.at("paragraphs") {
-        block(below: 0.65em)[#mk(p)]
+        par(p)
     }
 
     v(1.8cm)

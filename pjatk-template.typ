@@ -15,6 +15,37 @@
     "list-of-tables": ("pl": "Spis Tabel", "en": "List of Tables"),
 )
 
+#let aiStatementStrings = (
+    "pl": (
+        "title": "OŚWIADCZENIE STUDENTA DOTYCZĄCE WYKORZYSTANIA SZTUCZNEJ INTELIGENCJI (AI)",
+        "name-prefix": "Ja, niżej podpisany/a:",
+        "field-prefix": "student/ka kierunku:",
+        "album-prefix": "numer albumu studenta:",
+        "paragraphs": (
+            "Oświadczam, że zapoznałem/am się z treścią Zarządzenia Rektora Polsko-Japońskiej Akademii Technik Komputerowych z dnia 1 kwietnia 2026 r. oraz z \"Wytycznymi dotyczącymi wykorzystywania sztucznej inteligencji w procesie dydaktycznym PJATK\", stanowiącymi załącznik do ww. zarządzenia.",
+            "Oświadczam, że ewentualne wykorzystanie narzędzi sztucznej inteligencji (AI) w niniejszej pracy miało charakter wyłącznie pomocniczy i nie stanowiło zastępstwa dla mojej samodzielnej pracy.",
+            "Oświadczam, że treść pracy stanowi moje własne, samodzielne opracowanie oraz ponoszę pełną odpowiedzialność za jej zawartość, niezależnie od wykorzystania narzędzi AI.",
+            "Oświadczam, że nie wykorzystywałem/am narzędzi AI do generowania treści stanowiących zasadniczą część pracy, w szczególności analiz, wniosków, interpretacji ani części podlegających ocenie jako przejaw twórczości własnej.",
+            "W przypadku korzystania z narzędzi AI sporządziłem/am Raport użycia AI zgodnie z obowiązującymi Wytycznymi i dołączyłem/am go do pracy.",
+        ),
+        "signature-label": "(czytelny podpis studenta/studentki)",
+    ),
+    "en": (
+        "title": "STUDENT'S STATEMENT REGARDING THE USE OF ARTIFICIAL INTELLIGENCE (AI)",
+        "name-prefix": "I, undersigned:",
+        "field-prefix": "Student:",
+        "album-prefix": "Student's album number:",
+        "paragraphs": (
+            "I hereby declare that I have read the content of the Order of the Rector of the Polish-Japanese Academy of Information Technology of 1 April 2026 and the \"Guidelines on the use of artificial intelligence in the teaching process of PJATK\", which are attached to the above-mentioned order.",
+            "I declare that the possible use of artificial intelligence (AI) tools in this work was only auxiliary and did not constitute a substitute for my independent work.",
+            "I declare that the content of the work is my own research and I am fully responsible for its content, regardless of the use of AI tools.",
+            "I declare that I have not used AI tools to generate content that constitutes an essential part of the work, in particular analyses, conclusions, interpretations or parts that are subject to evaluation as a manifestation of my own work.",
+            "In the case of using AI tools, I have prepared an AI Usage Report in accordance with the applicable Guidelines and attached it to the work.",
+        ),
+        "signature-label": "(legible signature of the student)",
+    ),
+)
+
 #let placeholder-abstract = [
     The abstract should be between 400 and 1500 characters, including spaces.
     *Thesis written in English must also include abstract and keywords translation to Polish*.
@@ -31,6 +62,8 @@
     #sym.dot.op Treat #sym.dot.op them #sym.dot.op as #sym.dot.op tags #sym.dot.op Your #sym.dot.op thesis
     #sym.dot.op must #sym.dot.op be #sym.dot.op searchable #sym.dot.op using #sym.dot.op them #sym.dot.op
     Separate them by using the `#sym.dot.op` syntax.]
+
+#let mk(t) = eval(mode: "markup", t)
 
 #let titlepage(
     language,
@@ -59,7 +92,7 @@
 
            #v(1cm)
 
-           #eval(mode: "markup", authors.map(s => s.replace("#", "\#") + "\\").join("\n"))
+           #mk(authors.map(s => s.replace("#", "\#") + "\\").join("\n"))
 
            #v(1cm)
 
@@ -101,6 +134,48 @@
     keywords
 }
 
+#let aiStatement(language, name, album, field, placeDate) = {
+    let s = aiStatementStrings.at(language)
+
+    align(right)[
+        #set par(justify: false)
+        #placeDate
+    ]
+
+    v(2.2cm)
+
+    align(center)[
+        #set par(justify: false)
+        #strong(text(size: 1.1em, hyphenate: false)[#mk(s.at("title"))])
+    ]
+
+    v(1.6cm)
+
+    let fieldLine(prefix, value) = block(below: 0.55em)[
+        #mk(prefix) #mk(value.replace("#", "\#"))
+    ]
+
+    {
+        set par(justify: false)
+        fieldLine(s.at("name-prefix"), name)
+        fieldLine(s.at("field-prefix"), field)
+        fieldLine(s.at("album-prefix"), album)
+    }
+
+    v(1em)
+
+    for p in s.at("paragraphs") {
+        par(p)
+    }
+
+    v(1.8cm)
+    align(right)[
+        #set par(justify: false)
+        #box(width: 6.5cm, repeat(gap: 2pt)[.]) \
+        #mk(s.at("signature-label"))
+    ]
+}
+
 #let apply-pjatk-template(
     body,
     language: "en",
@@ -108,6 +183,7 @@
     faculty: "Faculty of Computer Science",
     department: "Name of your Specialization's Department",
     specialization: "Name of your Specialization",
+    field-of-study: "Computer Science",
     authors: ("Your Name --- s#####",),
     title: "Your Carefully Selected and Expressive Thesis Title",
     supervisor: "Supervisor's Name",
@@ -120,6 +196,7 @@
     faculty-pl: "Wydział Informatyki",
     department-pl: "Nazwa katedry",
     specialization-pl: "Nazwa specjalizacji",
+    field-of-study-pl: "Informatyka",
     title-pl: "Twój starannie dobrany i ekspresywny tytuł pracy dyplomowej",
     abstract-pl: "Tłumaczenie streszczenia.",
     keywords-pl: "Tłumaczenie słów kluczowych.",
@@ -272,6 +349,23 @@
             set text(lang: "pl")
             abstractAndKeywords("pl", abstract-pl, keywords-pl)
             set text(lang: "en")
+        }
+    }
+
+    context {
+        let stmtLang = text.lang
+        let fieldValue = if stmtLang == "pl" { field-of-study-pl } else { field-of-study }
+        let dateLocale = if stmtLang == "pl" { "pl" } else { "en-GB" }
+        let placeDate = [#commonPhrases.at("city").at(stmtLang), #icu.fmt(datetime.today(), date-fields: "YMD", locale: dateLocale, length: "long")#if stmtLang == "pl" [ r.]]
+
+        pagebreak()
+        pagebreak()
+        for (i, author) in authors.enumerate() {
+            if i > 0 { pagebreak() }
+            let parts = author.split("---")
+            let name = parts.at(0).trim()
+            let album = if parts.len() > 1 { parts.at(1).trim() } else { "" }
+            aiStatement(stmtLang, name, album, fieldValue, placeDate)
         }
     }
 

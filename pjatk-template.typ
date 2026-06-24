@@ -209,10 +209,10 @@
 
     context {
         [
-            titlepage(
+            #titlepage(
                 language,
                 thesis-type,
-                chosenMargins,
+                normalMargins,
                 faculty,
                 department,
                 specialization,
@@ -221,15 +221,15 @@
                 if text.lang == "pl" { supervisor-pl } else { supervisor },
                 if text.lang == "pl" { reviewer-pl } else { reviewer },
             )
-        }
+        ]
 
         if text.lang == "en" {
             set text(lang: "pl")
             [
-                titlepage(
+                #titlepage(
                     "pl",
                     thesis-type,
-                    chosenMargins,
+                    normalMargins,
                     faculty-pl,
                     department-pl,
                     specialization-pl,

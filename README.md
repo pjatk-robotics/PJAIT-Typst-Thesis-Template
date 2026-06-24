@@ -118,6 +118,34 @@ you may need to change the template code
 or apply a new [set / show rule](https://typst.app/docs/reference/styling/)
 in your document(s).
 
+## AI-use statement
+
+The university requires every diploma thesis to include a signed
+**statement on the use of artificial intelligence**
+(_Oświadczenie studenta dotyczące wykorzystania AI_ /
+_Statement of student — Use of AI_).
+This template adds it for you automatically.
+
+One statement page is generated **per author** in `authors`,
+inserted right after the abstract and before the table of contents
+(with one blank page in front of the first statement).
+Every field is filled in from arguments you already provide:
+
+- the **name** and **album number** come from each `authors` entry
+  (the part before `---` is the name, the part after it is the album number);
+- the **field of study** comes from `field-of-study` / `field-of-study-pl`
+  (see the argument reference below);
+- the **city and date** are inserted automatically
+  (the university's city and today's date);
+- the **signature line is left blank** for a handwritten signature.
+
+The statement is rendered in a **single language** — your document's
+`language`.
+An English thesis therefore gets the English statement only,
+and a Polish thesis the Polish one
+(unlike the title page and abstract,
+which are produced in both languages for English theses).
+
 ## Documentation for `apply-pjatk-template()` function arguments
 
 > [!NOTE]
@@ -163,6 +191,11 @@ for Enlgish theses.
 
   Name of your specialization.
   You should know it.
+- `field-of-study: "Computer Science"` (🇬🇧)
+
+  Your field of study (Polish _kierunek_),
+  used to fill in the [AI-use statement](#ai-use-statement)
+  when the thesis is written in English (`language: "en"`).
 - `authors: ("Your Name --- s#####",)` (🇬🇧+🇵🇱)
 
   Array of authors' full names and index numbers.
@@ -231,6 +264,14 @@ for Enlgish theses.
 - `specialization-pl: "Nazwa specjalizacji"` (🇬🇧)
 
   Translation of your specialization.
+- `field-of-study-pl: "Informatyka"` (🇵🇱)
+
+  Polish name of your field of study,
+  shown on the [AI-use statement](#ai-use-statement)
+  of a **Polish** thesis (`language: "pl"`).
+  Unlike the other `-pl` arguments,
+  this one is _not_ a translation used on the English thesis' Polish pages
+  — it is the value used when the whole statement is in Polish.
 - `title-pl: "Twój starannie dobrany i ekspresywny tytuł pracy dyplomowej"` (🇬🇧)
 
   Translation of your title.

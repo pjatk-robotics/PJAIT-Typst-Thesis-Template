@@ -2,7 +2,10 @@
 
 #let commonPhrases = (
     "logo": ("pl": "contents/assets/images/PJATK_pl_poziom_1.pdf", "en": "contents/assets/images/PJAIT_en_poziom_1.pdf"),
-    "supervision-text": ("pl": "Praca inżynierska / Praca magisterska napisana pod kierunkiem:", "en": "Master's degree / Bachelor's degree thesis written under the supervision of:"),
+    "supervision-text": (
+        "engineering": ("pl": "Praca inżynierska napisana pod kierunkiem:", "en": "Bachelor's degree thesis written under the supervision of:"),
+        "master": ("pl": "Praca magisterska napisana pod kierunkiem:", "en": "Master's degree thesis written under the supervision of:"),
+    ),
     "city": ("pl": "Warszawa", "en": "Warsaw"),
     "abstract": ("pl": "Streszczenie", "en": "Abstract"),
     "keywords": ("pl": "Słowa kluczowe", "en": "Keywords"),
@@ -31,6 +34,7 @@
 
 #let titlepage(
     language,
+    thesis-type,
     margin,
     faculty,
     department,
@@ -71,7 +75,7 @@
                #set text(hyphenate: false)
                #block(width: 5cm)[
                    #align(left)[
-                       #commonPhrases.at("supervision-text").at(language)
+                       #commonPhrases.at("supervision-text").at(thesis-type).at(language)
                        #v(1em)
                        #strong(supervisor)\
                        #reviewer
@@ -100,6 +104,7 @@
 #let apply-pjatk-template(
     body,
     language: "en",
+    thesis-type: "engineering",
     faculty: "Faculty of Computer Science",
     department: "Name of your Specialization's Department",
     specialization: "Name of your Specialization",
@@ -120,6 +125,11 @@
     keywords-pl: "Tłumaczenie słów kluczowych.",
     highlight-inline-code: true,
 ) = {
+    assert(
+        thesis-type in ("engineering", "master"),
+        message: "thesis-type must be either \"engineering\" or \"master\", got: " + repr(thesis-type),
+    )
+
     set document(title: title)
 
     let normalMargins = (top: 1in, bottom: 1.25in, left: 1.75in, right: 1.75in);
@@ -199,9 +209,10 @@
 
     context {
         [
-            #titlepage(
+            titlepage(
                 language,
-                normalMargins,
+                thesis-type,
+                chosenMargins,
                 faculty,
                 department,
                 specialization,
@@ -210,14 +221,15 @@
                 if text.lang == "pl" { supervisor-pl } else { supervisor },
                 if text.lang == "pl" { reviewer-pl } else { reviewer },
             )
-        ]
+        }
 
         if text.lang == "en" {
             set text(lang: "pl")
             [
-                #titlepage(
+                titlepage(
                     "pl",
-                    normalMargins,
+                    thesis-type,
+                    chosenMargins,
                     faculty-pl,
                     department-pl,
                     specialization-pl,
